@@ -1,0 +1,4 @@
+name: argocd-setup.yml
+on:
+
+jobs:
