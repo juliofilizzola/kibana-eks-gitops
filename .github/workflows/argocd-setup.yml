@@ -1,4 +1,26 @@
-name: argocd-setup.yml
+name: ArgoCD Setup
+
 on:
+  workflow_run:
+    workflows: ["terraform"]
+    types:
+      - completed
 
 jobs:
+  argocd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pega kubeconfig do EKS (via OIDC)
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: ${{ secrets.EKS_ROLE }}  # Crie IAM role no seu AWS
+
+      - uses: azure/setup-kubectl@v4
+      - uses: azure/setup-helm@v4
+
+      - name: Sync Elastic App
+        run: |
+          kubectl apply -f apps/kibana/Application.yaml
