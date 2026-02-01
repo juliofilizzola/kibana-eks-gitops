@@ -21,6 +21,13 @@ jobs:
       - name: Terraform fmt
         run: terraform fmt -check
 
+      - name: Generate terraform.tfvars
+        run: |
+          cat <<EOF > terraform.tfvars
+          cluster_name = "kibana-cluster"
+          region       = "us-east-1"
+          EOF
+
       - name: Terraform init
         run: terraform init
 
