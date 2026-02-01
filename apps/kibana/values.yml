@@ -1,0 +1,15 @@
+# Elasticsearch
+elasticsearchHosts: "http://elasticsearch-master.elastic-system.svc.cluster.local:9200"
+
+# Kibana
+replicaCount: 1
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  className: "nginx"  # Instale nginx-ingress se quiser
+  hosts:
+    - host: kibana.local
+      paths:
+        - path: /
+          pathType: Prefix

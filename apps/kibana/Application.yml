@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: elastic-stack
+  name: kibana
   namespace: argocd
 spec:
   project: default
@@ -9,15 +9,9 @@ spec:
     repoURL: https://github.com/juliofilizzola/kibana-eks-gitops.git
     targetRevision: HEAD
     path: apps/kibana
-    helm:
-      releaseName: elastic-stack
-      chart: kibana
-      repoURL: https://helm.elastic.co
-      valuesObject:
-        elasticsearchHosts: "http://elasticsearch-master.elastic-system:9200"
   destination:
     server: https://kubernetes.default.svc
-    namespace: elastic-system
+    namespace: elastic-system  # Onde Kibana roda
   syncPolicy:
     automated:
       prune: true
