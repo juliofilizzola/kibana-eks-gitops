@@ -4,8 +4,6 @@ Este projeto utiliza Terraform para provisionar uma infraestrutura completa na A
 
 - VPC customizada
 - Cluster EKS (Kubernetes)
-- Namespaces para Elastic e Argo CD
-- Instalação do Argo CD via Helm
 
 ## Pré-requisitos
 
