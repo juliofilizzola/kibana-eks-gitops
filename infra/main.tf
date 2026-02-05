@@ -84,7 +84,7 @@ module "eks" {
   # ================= ACCESS ENTRIES =================
   access_entries = {
     eks_admin = {
-      principal_arn = "arn:aws:iam::<USER_IAM>:role/EKSAdminRole"
+      principal_arn = "arn:aws:iam::367265287622:user/BPTECH-DEVOSP"
 
       policy_associations = {
         cluster_admin = {
