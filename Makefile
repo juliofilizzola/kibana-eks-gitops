@@ -1,16 +1,19 @@
-.PHONY: init plan apply
+ENV ?= dev
+
+.PHONY: init plan apply destroy
 
 init:
-	@echo "Initializing project..."
-	# Add initialization commands here
-	cd infra && terraform init
+	@echo "Initializing project in environment: $(ENV)"
+	cd infra/environments/$(ENV) && terraform init
 
 plan:
-	@echo "Planning infrastructure changes..."
-	# Add planning commands here
-	cd infra && terraform plan
+	@echo "Planning infrastructure changes in environment: $(ENV)"
+	cd infra/environments/$(ENV) && terraform plan
 
 apply:
-	@echo "Applying infrastructure changes..."
-	# Add apply commands here
-	cd infra && terraform apply -auto-approve
+	@echo "Applying infrastructure changes in environment: $(ENV)"
+	cd infra/environments/$(ENV) && terraform apply -auto-approve
+
+destroy:
+	@echo "Destroying infrastructure in environment: $(ENV)"
+	cd infra/environments/$(ENV) && terraform destroy -auto-approve
