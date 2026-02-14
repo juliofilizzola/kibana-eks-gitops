@@ -1,4 +1,4 @@
-# Kibana EKS GitOps
+# eks-gitops-infra
 
 Este projeto utiliza Terraform para provisionar uma infraestrutura completa na AWS, incluindo:
 
@@ -14,7 +14,7 @@ Este projeto utiliza Terraform para provisionar uma infraestrutura completa na A
 ## Estrutura do Projeto
 
 ```
-kibana-eks-gitops/
+eks-gitops-infra/
 ├── apps/
 │   └── kibana/
 │       ├── Application.yml
